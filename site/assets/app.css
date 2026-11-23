@@ -1,0 +1,69 @@
+/* Additions on top of the Executive tool's design system. Everything here is
+   either a chart primitive or the paste grid - the shell, cards, buttons,
+   chips and tables all come from base.css unchanged. */
+
+.prebanner{
+  margin:18px auto 0;font-size:12.5px;color:var(--ink-2);
+  background:var(--amber-tint);border:1px solid var(--amber-line);
+  border-radius:var(--r);padding:11px 16px;line-height:1.55;
+}
+.prebanner b{color:var(--amber-ink)}
+
+.note{font-size:12.5px;color:var(--muted);line-height:1.6}
+.note code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;background:var(--soft);padding:1px 5px;border-radius:5px}
+.note p+p{margin-top:9px}
+
+/* metric rows: label, track, value - used by funnel, stages, ageing */
+.mrow{display:flex;align-items:center;gap:12px;font-size:13px;padding:7px 0}
+.mrow .lab{min-width:118px;font-weight:600;letter-spacing:-.1px}
+.mrow .trk{flex:1;height:9px;background:var(--track);border-radius:99px;overflow:hidden}
+.mrow .trk i{display:block;height:100%;border-radius:99px;background:var(--orange);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.mrow .num{min-width:92px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.mrow .num b{color:var(--ink);font-size:13.5px}
+
+/* target attainment */
+.tgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tgcard{border:1px solid var(--line);border-radius:12px;padding:15px;background:var(--input-soft)}
+.tgcard h3{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.tgcard h3 .who{margin-left:auto;font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0}
+.ok{color:var(--green)} .warn{color:var(--amber-ink)} .bad{color:var(--red)}
+.mrow .trk i.ok{background:var(--green)}
+.mrow .trk i.warn{background:var(--amber)}
+.mrow .trk i.bad{background:var(--red)}
+
+/* svg charts */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .ax{fill:var(--muted);font-size:10.5px;font-family:var(--sans)}
+.chart .ln{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chart .dot{stroke:var(--card);stroke-width:1.5}
+.chartkey{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:12px;color:var(--muted)}
+.chartkey span{display:inline-flex;align-items:center;gap:6px}
+.chartkey i{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+.donut{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+
+/* tables */
+tbody td{padding:10px 16px;border-bottom:1px solid var(--row-line);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--hover)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.tight{white-space:nowrap}
+td .sub{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.lnk{color:var(--orange-dark);text-decoration:none}
+.lnk:hover{text-decoration:underline}
+.trunc{display:block;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.local{box-shadow:inset 3px 0 0 var(--green)}
+
+/* modal */
+.modal{position:absolute;inset:0;background:rgba(42,26,19,.45);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:60px 18px}
+.modal.on{display:flex}
+.modal .mbody{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow-lg);width:100%;max-width:760px;border:1px solid var(--line)}
+.mhead{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.mhead b{font-family:var(--display);font-size:15px}
+.mfoot{display:flex;align-items:center;gap:9px;padding:14px 18px;border-top:1px solid var(--line)}
+.pastebox{width:100%;height:190px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--input-soft);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;outline:none;resize:vertical;line-height:1.6}
+.pastebox:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(201,74,39,.14)}
+
+.loadnote{padding:40px 10px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){.mrow .lab{min-width:92px}.mrow .num{min-width:74px}}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Growth &amp; Revenue — Work Beyond Borders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap hrow">
+    <a class="brand" href="https://workbeyondborder.com" target="_blank" rel="noopener">
+      <img class="logo" alt="Work Beyond Borders" src="assets/logo.png">
+      <div><b>Growth &amp; Revenue</b><span>Work Beyond Borders</span></div>
+    </a>
+    <nav class="tabs" id="tabs">
+      <button class="on" data-p="overview">Overview</button>
+      <button data-p="performance">Performance</button>
+      <button data-p="analytics">Analytics</button>
+      <button data-p="log">Outreach Log</button>
+      <button data-p="pipeline">Pipeline</button>
+      <button data-p="data">Data</button>
+    </nav>
+    <div class="hactions">
+      <select class="f" id="selC" title="Contractor"></select>
+      <select class="f" id="selM" title="Month"></select>
+      <button class="btn sm" id="btnTheme" title="Switch between light and dark" aria-label="Switch between light and dark">☽</button>
+    </div>
+  </div>
+</header>
+
+<div class="prebanner wrap" id="preview">
+  <b>Preview build.</b> No sign-in yet and nothing is saved to a server — rows you add stay in this browser only.
+  Figures come from the exported sheets, imported <span id="genAt">—</span>.
+</div>
+
+<main class="wrap">
+
+  <section class="panel on" id="p-overview">
+    <div class="phead">
+      <div><h1>Overview</h1><p id="ovSub">Loading…</p></div>
+    </div>
+    <div class="grid g4" id="ovKpis"></div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Outreach by month <span class="n" id="ovTrendNote"></span></h2>
+        <div id="ovTrend"></div>
+      </div>
+      <div class="card">
+        <h2>Funnel <span class="n">All selected rows</span></h2>
+        <div id="ovFunnel"></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Status split</h2>
+        <div id="ovStatus"></div>
+      </div>
+      <div class="card">
+        <h2>Per working day <span class="n">Volume ÷ days worked</span></h2>
+        <div id="ovRate"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-performance">
+    <div class="phead">
+      <div><h1>Performance</h1><p>Actual against target. Replaces Monthly Overview, Weekly Overview and Weekly Breakdown.</p></div>
+    </div>
+    <div class="grid g4" id="perfKpis"></div>
+    <div class="card" style="margin-top:16px">
+      <h2>Monthly target attainment <span class="n" id="perfMonthNote"></span></h2>
+      <div id="perfTargets"></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2>Weekly breakdown</h2>
+      <div class="tablewrap"><table id="perfWeeks"></table></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-analytics">
+    <div class="phead">
+      <div><h1>Analytics</h1><p>Which platforms, roles and people actually produce clients.</p></div>
+    </div>
+    <div class="card">
+      <h2>Platform performance <span class="n">Sorted by volume</span></h2>
+      <div class="tablewrap"><table id="anPlat"></table></div>
+      <p class="note" id="anPlatNote"></p>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Contractor comparison</h2>
+        <div id="anContractors"></div>
+      </div>
+      <div class="card">
+        <h2>Follow-up payoff</h2>
+        <div id="anFollow"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2>Role demand <span class="n">Roles with 20+ touches, best reply rate first</span></h2>
+      <div class="tablewrap"><table id="anRoles"></table></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-log">
+    <div class="phead">
+      <div><h1>Outreach log</h1><p>The source of truth. Everything else on this site is a query over this table.</p></div>
+      <div class="sp"></div>
+      <button class="btn primary sm" id="btnPaste">Paste rows</button>
+    </div>
+    <div class="toolbar">
+      <input class="f" id="logQ" placeholder="Search company, role, email…" style="min-width:240px">
+      <select class="f" id="logS"></select>
+      <select class="f" id="logP"></select>
+      <span class="grow"></span>
+      <span class="chip" id="logCount">—</span>
+    </div>
+    <div class="tablewrap"><table id="logTable"></table></div>
+    <div style="text-align:center;margin-top:14px">
+      <button class="btn" id="logMore">Show more</button>
+    </div>
+  </section>
+
+  <section class="panel" id="p-pipeline">
+    <div class="phead">
+      <div><h1>Pipeline</h1><p>What still needs action. The sheets hold this data but never surface it.</p></div>
+    </div>
+    <div class="grid g4" id="pipeKpis"></div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Live prospects by stage</h2>
+        <div id="pipeStages"></div>
+      </div>
+      <div class="card">
+        <h2>Ageing <span class="n">Days since last touch</span></h2>
+        <div id="pipeAge"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2>Needs action <span class="n" id="pipeActNote"></span></h2>
+      <div class="tablewrap"><table id="pipeTable"></table></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-data">
+    <div class="phead">
+      <div><h1>Data</h1><p>What the import found, and what it had to repair.</p></div>
+    </div>
+    <div class="grid g4" id="qKpis"></div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Import reconciliation</h2>
+        <div id="qTable"></div>
+      </div>
+      <div class="card">
+        <h2>Why the old sheets disagreed</h2>
+        <div class="note" id="qExplain"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal" id="pasteModal">
+  <div class="mbody">
+    <div class="mhead"><b>Paste rows</b><button class="btn ghost sm" id="pasteX">✕</button></div>
+    <div style="padding:18px">
+      <p class="note" style="margin-bottom:10px">Copy a block straight out of the sheet and paste below. Columns, tab separated:
+      <code>date · name · email · company · platform · role · link · status</code></p>
+      <textarea id="pasteBox" class="pastebox" placeholder="2026-11-20&#9;&#9;hr@acme.com&#9;Acme&#9;OLJ&#9;TikTok Shop Manager&#9;https://…&#9;Sent"></textarea>
+      <div id="pastePreview" class="note"></div>
+    </div>
+    <div class="mfoot">
+      <span class="note" id="pasteMsg"></span>
+      <span style="flex:1"></span>
+      <button class="btn" id="pasteCancel">Cancel</button>
+      <button class="btn primary" id="pasteSave">Add rows</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
